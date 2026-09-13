@@ -1,0 +1,11 @@
+{
+  "name": "简单治疗模式示例",
+  "description": "降低治疗费用与时间, 清除前置条件, 减弱疾病每跳伤害",
+  "conditions": {
+    "Booster.Overweight": { "Cost": 2 },
+    "Booster.Smoker": { "Cost": 2 },
+    "Booster.MorbidlyObese": { "Cost": 2, "Prerequiste": "" }
+  },
+  "treatments": {},
+  "anatomy": {}
+}
