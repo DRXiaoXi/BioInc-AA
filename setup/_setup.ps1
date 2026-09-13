@@ -144,6 +144,15 @@ function Uninstall-Mod($game) {
         Remove-Item $bepDir -Force
         Write-Ok '删除 BepInEx'
     }
+    # 安装时自动创建的备份目录也一并清除
+    $mb = Join-Path $game 'MOD_BACKUP'
+    if (Test-Path $mb) { Remove-Item $mb -Recurse -Force; Write-Ok '删除 MOD_BACKUP\' }
+    # 提示: 若用户曾把安装包解压进游戏目录, 这里会留下安装器自身的几个文件(非MOD文件)
+    $installerCopies = @('安装MOD.bat', '卸载MOD.bat', '_setup.ps1', '使用说明.txt') | Where-Object { Test-Path (Join-Path $game $_) }
+    if ($installerCopies.Count -gt 0 -and (Join-Path $game '_setup.ps1') -ne $PSCommandPath) {
+        Write-Warn2 ('游戏目录下还有解压进去的安装器文件: ' + ($installerCopies -join ', '))
+        Write-Warn2 '它们不是 MOD 文件; 如不再需要可手动删除, 或保留用于下次安装'
+    }
     Write-Ok '原版文件未受任何影响'
 }
 
