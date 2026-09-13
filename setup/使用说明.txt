@@ -1,0 +1,57 @@
+﻿=============================================================
+ Bio Inc. Redemption MOD 安装包
+ BioIncAA v1.3.0 (抗锯齿 + 帧率解锁) + BepInEx 5.4.23.2
+ 开发: 哔哩哔哩: 逐梦之子-晓夕
+=============================================================
+
+【这是什么】
+为《生化公司: 救赎》增加以下功能, 全部通过游戏内"设置 → 画质"面板操作:
+
+  * 抗锯齿 (MSAA): 关闭 / 2x / 4x / 8x
+  * 帧率解锁: 默认(60) / 90 / 120 / 144 / 165 / 240 / 不限
+  * 顺带修复了游戏原生bug: 设置面板反复开关会越来越宽
+
+选择立即生效并自动记住, 下次启动无需重设。
+
+【安装】
+1. 双击「安装MOD.bat」(需要能访问游戏目录的权限, 若提示 UAC 请允许)
+2. 安装器会自动:
+   - 通过 Steam 注册表 / 常见路径查找游戏目录 (也可手动指定)
+   - 若游戏正在运行会询问关闭
+   - 备份被覆盖的文件到游戏目录下 MOD_BACKUP\
+3. 看到"安装完成"后启动游戏即可
+
+也可以: 把 BioIncModSetup.zip 解压到任意位置后运行 payload\_setup.ps1
+      (右键"使用 PowerShell 运行", 或用上面的 bat)
+
+【卸载】
+双击「卸载MOD.bat」。
+只删除 MOD 自己的文件 (winhttp.dll / doorstop_config.ini / BepInEx),
+原版游戏文件一个都不会动; Steam"验证完整性"也无需执行。
+
+【修复/重装】
+已安装状态下再次运行「安装MOD.bat」即自动转为修复模式,
+重装 MOD 文件, 保留你在面板里的设置。
+
+【配置文件】(可选)
+游戏目录\BepInEx\config\bioinc.mod.antialiasing.cfg
+  [MSAA]  DefaultLevel: 面板未选择时的默认抗锯齿 (-1=跟随游戏, 0/2/4/8)
+  [Video] FpsUnlock:    面板未选择时的帧率 (0=游戏默认60, -1=不限, 其他=数值)
+面板里的选择优先级高于配置文件。
+
+【文件清单】(安装到游戏目录的内容)
+  winhttp.dll, doorstop_config.ini, .doorstop_version   ← BepInEx 加载器
+  BepInEx\core\ (18个DLL)                               ← BepInEx 5.4.23.2 框架
+  BepInEx\patchers\                                     ← BepInEx 预处理组件
+  BepInEx\plugins\BioIncAA.dll                          ← 本 MOD 主体
+  BepInEx\config\bioinc.mod.antialiasing.cfg            ← 默认配置
+  BepInEx\BioIncAA.version                              ← 版本标记
+  MOD_BACKUP\                                           ← 安装时自动备份
+
+【已知说明】
+  * 手柄导航未把新增的两个下拉框编入方向键链, 鼠标操作不受影响
+  * MSAA 只作用于 3D 画面边缘; UI 文字本身是矢量渲染, 无锯齿
+  * 帧率解锁档位会自动关闭垂直同步 (vsync 开启时帧率以显示器刷新率为准)
+  * 联机/每日挑战走服务器, 本 MOD 不涉及也不影响联机数据
+
+—— 仅供学习交流, 仅本地使用, 请勿用于商业分发。
